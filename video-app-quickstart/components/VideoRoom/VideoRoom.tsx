@@ -40,6 +40,7 @@ import {
 import PostVideoRoom from "../PostVideoRoom/PostVideoRoom";
 
 const BACKEND_URL = process.env.NEXT_PUBLIC_VIDEO_APP_URL;
+const TWILIO_SERVERLESS = process.env.TWILIO_SERVERLESS;
 
 export default function VideoRoom() {
   const router = useRouter();
@@ -72,7 +73,7 @@ export default function VideoRoom() {
   async function connect_sync(code: any) {
     // Obtain a JWT access token
     setSyncError("");
-    await fetch(`${BACKEND_URL}/client-get-sync-token?code=${code}`)
+    await fetch(`${TWILIO_SERVERLESS}/client-get-sync-token?code=${code}`)
       .then((response) => response.json())
       .then((response) => {
         if (response.error) {
