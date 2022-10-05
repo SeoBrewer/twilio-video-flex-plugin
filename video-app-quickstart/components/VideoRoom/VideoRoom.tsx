@@ -73,7 +73,9 @@ export default function VideoRoom() {
   async function connect_sync(code: any) {
     // Obtain a JWT access token
     setSyncError("");
-    await fetch(`${TWILIO_SERVERLESS}/client-get-sync-token?code=${code}`)
+    await fetch(
+      `https://video-in-flex-functions-9391-dev.twil.io/client-get-sync-token?code=${code}`
+    )
       .then((response) => response.json())
       .then((response) => {
         if (response.error) {
